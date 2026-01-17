@@ -27,14 +27,14 @@ def run_test_case(task_description: str):
                 print(f"Refinement Iteration: {value['iterations']}")
                 print(f"Plan: {value['code_solution'].explanation[:100]}...")
             elif key == "execute":
-                status = "Success" if value['error'] == "none" else f"❌ Error: {value['error']}"
+                status = "Success" if value['error'] == "none" else f"Error: {value['error']}"
                 print(f"Execution Status: {status}")
 
     # Final result retrieval
     final_state = app.get_state({"configurable": {"thread_id": "1"}}).values # Simplification
     # Note: In production, you'd use a thread_id and checkpointer
     print("\n" + "="*50)
-    print("✨ FINAL VERDICT: Task Completed Successfully.")
+    print(" FINAL VERDICT: Task Completed Successfully.")
 
 if __name__ == "__main__":
     # Test Case 1: Complex logic (Handling Nested JSON and Math)

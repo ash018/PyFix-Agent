@@ -7,7 +7,7 @@ load_dotenv()
 
 def run_test_case(task_description: str):
     print("\n" + "="*50)
-    print(f"🚀 STARTING TASK: {task_description[:60]}...")
+    print(f"STARTING TASK: {task_description[:60]}...")
     print("="*50)
     
     # Initialize the graph state
@@ -19,8 +19,7 @@ def run_test_case(task_description: str):
         "history": []
     }
     
-    # Run the graph
-    # Turing Tip: Using .stream() shows you can handle real-time agent tracking
+    
     for output in app.stream(initial_state):
         for key, value in output.items():
             print(f"\n[Node: {key}]")
@@ -28,7 +27,7 @@ def run_test_case(task_description: str):
                 print(f"Refinement Iteration: {value['iterations']}")
                 print(f"Plan: {value['code_solution'].explanation[:100]}...")
             elif key == "execute":
-                status = "✅ Success" if value['error'] == "none" else f"❌ Error: {value['error']}"
+                status = "Success" if value['error'] == "none" else f"❌ Error: {value['error']}"
                 print(f"Execution Status: {status}")
 
     # Final result retrieval
